@@ -1,0 +1,117 @@
+#################################
+#            xD-Bans            #
+#          Autor xDGWG          #
+#################################
+
+
+configs:
+  #flat or mysql
+  dataType: flat
+
+  playerNameFilter: true
+
+  mysql:
+    host: "localhost"
+    port: "3306"
+    user: "root"
+    password: "pass"
+    name: "xD-Bans"
+
+messages:
+  noPermission: "&4Blad: &cNie masz dostepu do tej komendy! &8(&7{PERM}&8)"
+
+  usage: "&4Blad: &cPoprawne uzycie: &7{USAGE}"
+
+  notExist: "&4Blad: &cPodany gracz nie istnieje!"
+
+  bypass: "&4Blad: &cPodany gracz jest nietykalny!"
+
+  banned: "&4Blad: &cPodany gracz jest juz zbanowany!"
+
+  notBanned: "&4Blad: &cPodany gracz nie jest zbanowany!"
+
+  banBroadcast: "&8>> &cGracz &4{PLAYER} &czostal zbanowany przez &4{ADMIN} &cza &4{REASON}&c!"
+
+  unbanBroadcast: "&8>> &aGracz &2{PLAYER} &azostal odbanowany przez &2{ADMIN}&a!"
+
+  banYourself: "&4Blad: &cNie mozesz siebie zbanowac!"
+
+  bypassOn: "&8>> &cOd teraz gracz &4{PLAYER} &cjest nietykalny!"
+
+  bypassOff: "&8>> &cOd teraz gracz &4{PLAYER} &cjest tykalny!"
+
+  badNickname: "&8&l>> &cWejdz na serwer za pomoca nazwy &4{NORMAL-NAME} &ca nie &4{NAME}&c!"
+
+  tempBanBroadcast: "&8>> &cGracz &4{PLAYER} &czostal zbanowany przez &4{ADMIN} &cza &4{REASON} &cna &4{TIME}&c!"
+
+  kickPlayerBroadcast: "&8>> &cGracz &4{PLAYER} &czostal wyrzucony z serwera przez &4{ADMIN} &cza &4{REASON}&c!"
+
+  kickAllBroadcast: "&8>> &cWszyscy gracze zostali wyrzuceni z serwera przez &4{ADMIN} &cza &4{REASON}&c!"
+
+  timeFormat:
+    seconds: "sek."
+    minutes: "min."
+    hours: "godz."
+    days: "dni"
+
+  kick:
+    - "&8<==============================>"
+    - "&4Zostales wyrzucony z serwera!"
+    - ""
+    - "&8>> &cPowod: &7{REASON}"
+    - "&8>> &cWyrzucajacy: &7{ADMIN}"
+    - "&8<==============================>"
+
+  banKick:
+    - "&8<==============================>"
+    - "&4Zostales zbanowany!"
+    - ""
+    - "&8>> &cPowod: &7{REASON}"
+    - "&8>> &cBanujacy: &7{ADMIN}"
+    - "&8<==============================>"
+
+  tempBanKick:
+    - "&8<==============================>"
+    - "&4Zostales tymczasowo zbanowany!"
+    - ""
+    - "&8>> &cPowod: &7{REASON}"
+    - "&8>> &cBanujacy: &7{ADMIN}"
+    - "&8>> &cUnban za: {TIME}"
+    - "&8<==============================>"
+
+  banJoin:
+    - "&8<==============================>"
+    - "&4Zostales zbanowany!"
+    - ""
+    - "&8>> &cPowod: &7{REASON}"
+    - "&8>> &cBanujacy: &7{ADMIN}"
+    - "&8<==============================>"
+
+  tempBanJoin:
+    - "&8<==============================>"
+    - "&4Zostales tymczasowo zbanowany!"
+    - ""
+    - "&8>> &cPowod: &7{REASON}"
+    - "&8>> &cBanujacy: &7{ADMIN}"
+    - "&8>> &cUnban za: {TIME}"
+    - "&8<==============================>"
+
+  check:
+    lines:
+      - "&8-------------------------------------"
+      - "&8>> &7Gracz: &c{PLAYER}"
+      - "&8>> &7Uuid: &c{UUID}"
+      - "&8>> &7Ip: &c{IP}"
+      - "&8>> &7Mozna zbanowac: &c{BYPASS}"
+      - "&8>> &7Rodzaj bana: &c{STATUS}"
+      - "&8>> &7Czas bana: &c{TIME}"
+      - "&8>> &7Powod bana: &c{REASON}"
+      - "&8>> &7Zbanowal: &c{ADMIN}"
+      - "&8-------------------------------------"
+    status:
+      noBan: "-"
+      permBan: "Permanentny"
+      tempBan: "Tymczasowy"
+    bypass:
+      enable: "Tak"
+      disable: "Nie"

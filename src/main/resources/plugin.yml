@@ -1,0 +1,12 @@
+name: xD-Bans
+author: xDGWG
+version: 1.1
+main: pl.xdgwg.bans.BansPlugin
+
+commands:
+  ban:
+  tempban:
+  unban:
+  bypass:
+  check:
+  kick:
