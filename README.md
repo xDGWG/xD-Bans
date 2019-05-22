@@ -1,4 +1,4 @@
-# xD-Bans
+# xD-Bans v1.1
 Ban plugin for minecraft server
 
 # Commands
