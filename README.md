@@ -28,4 +28,4 @@ Ban plugin for minecraft server
 - xdgwg.bypass
 
 # Download
-- https://xdgwg.pl/plugins/xD-Bans.zip
+- https://xdgwg.pl/pluginy.html
