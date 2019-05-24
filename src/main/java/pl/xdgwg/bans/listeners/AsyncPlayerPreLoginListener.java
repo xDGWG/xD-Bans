@@ -12,27 +12,12 @@ import java.util.ArrayList;
 
 public class AsyncPlayerPreLoginListener implements Listener {
 
-    private static ArrayList<String> names = new ArrayList<String>();
-    private static ArrayList<String> normalNick = new ArrayList<String>();
-
     @EventHandler
     public void asyncPlayerPreLogin(AsyncPlayerPreLoginEvent e){
         //Sprawdzanie nicku
-        if (ConfigManager.getPlayerNameFilter()) {
-            for (User u : UserManager.getUsers()) {
-                names.add(u.getName().toUpperCase());
-                normalNick.add(u.getName());
-            }
-            if ((names.contains(e.getName().toUpperCase()) && (UserManager.get(e.getUniqueId()) == null))) {
-                String normal_nick = "";
-                for (int i = 0; i < names.size(); i++) {
-                    if (normalNick.get(i).equalsIgnoreCase(e.getName())) {
-                        normal_nick = normalNick.get(i);
-                    }
-                }
-                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, Util.fixColor(ConfigManager.getBadNickname().replace("{NORMAL-NAME}", normal_nick)).replace("{NAME}", e.getName()));
-                names.clear();
-                normalNick.clear();
+        for (User us : UserManager.getUsers()){
+            if ((us.getName().equalsIgnoreCase(e.getName())) && (!us.getName().equals(e.getName()))){
+                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, Util.fixColor(ConfigManager.getBadNickname().replace("{NORMAL-NAME}", us.getName())).replace("{NAME}", e.getName()));
                 return;
             }
         }
