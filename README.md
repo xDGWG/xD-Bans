@@ -1,4 +1,4 @@
-# xD-Bans
+# xD-Bans v1.1
 Ban plugin for minecraft server
 
 # Commands
@@ -28,4 +28,4 @@ Ban plugin for minecraft server
 - xdgwg.bypass
 
 # Download
-- https://xdgwg.pl/plugins/xD-Bans.zip
+- https://xdgwg.pl/pluginy.html
