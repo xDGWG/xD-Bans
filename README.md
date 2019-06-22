@@ -1,4 +1,4 @@
-# xD-Bans v1.1
+# xD-Bans v1.2
 Ban plugin for minecraft server
 
 # Commands
@@ -14,6 +14,12 @@ Ban plugin for minecraft server
 
 - /bypass
 
+- /mute
+
+- /tempmute
+
+- /unmute
+
 # Permissions
 - xdgwg.ban
 
@@ -26,6 +32,12 @@ Ban plugin for minecraft server
 - xdgwg.check
 
 - xdgwg.bypass
+
+- xdgwg.mute
+
+- xdgwg.tempmute
+
+- xdgwg.unmute
 
 # Download
 - https://xdgwg.pl/pluginy.html
