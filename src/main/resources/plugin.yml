@@ -1,7 +1,8 @@
 name: xD-Bans
 author: xDGWG
-version: 1.1
+version: 1.2
 main: pl.xdgwg.bans.BansPlugin
+website: https://xdgwg.pl
 
 commands:
   ban:
@@ -10,3 +11,6 @@ commands:
   bypass:
   check:
   kick:
+  mute:
+  unmute:
+  tempmute:

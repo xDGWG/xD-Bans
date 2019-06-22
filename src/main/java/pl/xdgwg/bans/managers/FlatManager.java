@@ -24,11 +24,16 @@ public class FlatManager {
         yamlConfiguration.set("uuid", u.getUuid().toString());
         yamlConfiguration.set("ip", u.getIp());
         yamlConfiguration.set("bypass", u.getBypass());
-        yamlConfiguration.set("status", u.getStatus());
-        yamlConfiguration.set("time", u.getTime());
-        yamlConfiguration.set("reason", u.getReason());
-        yamlConfiguration.set("admin", u.getAdmin());
-        yamlConfiguration.set("number", u.getNumber());
+        yamlConfiguration.set("banStatus", u.getBanStatus());
+        yamlConfiguration.set("banTime", u.getBanTime());
+        yamlConfiguration.set("banReason", u.getBanReason());
+        yamlConfiguration.set("banAdmin", u.getBanAdmin());
+        yamlConfiguration.set("banNumber", u.getBanNumber());
+        yamlConfiguration.set("muteStatus", u.getMuteStatus());
+        yamlConfiguration.set("muteTime", u.getMuteTime());
+        yamlConfiguration.set("muteReason", u.getMuteReason());
+        yamlConfiguration.set("muteAdmin", u.getMuteAdmin());
+        yamlConfiguration.set("muteNumber", u.getMuteNumber());
         try {
             yamlConfiguration.save(file);
         } catch (IOException e) {
@@ -44,12 +49,17 @@ public class FlatManager {
             String uuid = yamlConfiguration.getString("uuid");
             String ip = yamlConfiguration.getString("ip");
             boolean bypass = yamlConfiguration.getBoolean("bypass");
-            int status = yamlConfiguration.getInt("status");
-            long time = yamlConfiguration.getLong("time");
-            String reason = yamlConfiguration.getString("reason");
-            String admin = yamlConfiguration.getString("admin");
-            long number = yamlConfiguration.getLong("number");
-            new User(name, uuid, ip, bypass, status, time, reason, admin, number);
+            int banStatus = yamlConfiguration.getInt("banStatus");
+            long banTime = yamlConfiguration.getLong("banTime");
+            String banReason = yamlConfiguration.getString("banReason");
+            String banAdmin = yamlConfiguration.getString("banAdmin");
+            long banNumber = yamlConfiguration.getLong("banNumber");
+            int muteStatus = yamlConfiguration.getInt("muteStatus");
+            long muteTime = yamlConfiguration.getLong("muteTime");
+            String muteReason = yamlConfiguration.getString("muteReason");
+            String muteAdmin = yamlConfiguration.getString("muteAdmin");
+            long muteNumber = yamlConfiguration.getLong("muteNumber");
+            new User(name, uuid, ip, bypass, banStatus, banTime, banReason, banAdmin, banNumber, muteStatus, muteTime, muteReason, muteAdmin, muteNumber);
         }
     }
 }

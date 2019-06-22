@@ -53,14 +53,14 @@ public class TempbanCommand implements CommandExecutor {
             Util.sendMessage(commandSender, ConfigManager.getBanYourself());
             return false;
         }
-        if (u.getStatus() == 1 || u.getStatus() == 2){
+        if (u.getBanStatus() == 1 || u.getBanStatus() == 2){
             Util.sendMessage(commandSender, ConfigManager.getBanned());
             return false;
         }
-        u.setStatus(2);
-        u.setReason(reason);
-        u.setAdmin(adminName);
-        u.setTime(Util.getSystemTime());
+        u.setBanStatus(2);
+        u.setBanReason(reason);
+        u.setBanAdmin(adminName);
+        u.setBanTime(Util.getSystemTime());
         long number = 0;
         String bcTime = "";
         if (timeType.equalsIgnoreCase("s")){
@@ -76,7 +76,7 @@ public class TempbanCommand implements CommandExecutor {
             number = ((time* 60) * 60) * 24;
             bcTime = "" + time + " " + ConfigManager.getTimeFormatDays();
         }
-        u.setNumber(number);
+        u.setBanNumber(number);
         DataManager.saveUser(u);
         String kickMessage = Util.stringList(ConfigManager.getTempBanKick()).replace("{ADMIN}", adminName).replace("{REASON}", reason).replace("{TIME}", bcTime);
         if (offlinePlayer.isOnline()) offlinePlayer.getPlayer().kickPlayer(Util.fixColor(kickMessage));

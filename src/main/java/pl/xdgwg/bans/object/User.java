@@ -11,22 +11,32 @@ public class User {
     private final UUID uniqueId;
     private String ip;
     private boolean bypass;
-    private int status;
-    private long time;
-    private String reason;
-    private String admin;
-    private long number;
+    private int banStatus;
+    private long banTime;
+    private String banReason;
+    private String banAdmin;
+    private long banNumber;
+    private int muteStatus;
+    private long muteTime;
+    private String muteReason;
+    private String muteAdmin;
+    private long muteNumber;
 
-    public User(String name, String uniqueId, String ip, boolean bypass, int status, long time, String reason, String admin, long number){
+    public User(String name, String uniqueId, String ip, boolean banBypass, int banStatus, long banTime, String banReason, String banAdmin, long banNumber, int muteStatus, long muteTime, String muteReason, String muteAdmin, long muteNumber){
         this.name = name;
         this.uniqueId = UUID.fromString(uniqueId);
         this.ip = ip.replace("/", "");
-        this.bypass = bypass;
-        this.status = status;
-        this.time = time;
-        this.reason = reason;
-        this.admin = admin;
-        this.number = number;
+        this.bypass = banBypass;
+        this.banStatus = banStatus;
+        this.banTime = banTime;
+        this.banReason = banReason;
+        this.banAdmin = banAdmin;
+        this.banNumber = banNumber;
+        this.muteStatus = muteStatus;
+        this.muteTime = muteTime;
+        this.muteReason = muteReason;
+        this.muteAdmin = muteAdmin;
+        this.muteNumber = muteNumber;
         UserManager.getUsers().add(this);
     }
 
@@ -35,11 +45,16 @@ public class User {
         this.uniqueId = UUID.fromString(resultSet.getString("uuid"));
         this.ip = resultSet.getString("ip").replace("/", "");
         this.bypass = resultSet.getBoolean("bypass");
-        this.status = resultSet.getInt("status");
-        this.time = resultSet.getLong("time");
-        this.reason = resultSet.getString("reason");
-        this.admin = resultSet.getString("admin");
-        this.number = resultSet.getLong("number");
+        this.banStatus = resultSet.getInt("banStatus");
+        this.banTime = resultSet.getLong("banTime");
+        this.banReason = resultSet.getString("banReason");
+        this.banAdmin = resultSet.getString("banAdmin");
+        this.banNumber = resultSet.getLong("banNumber");
+        this.muteStatus = resultSet.getInt("muteStatus");
+        this.muteTime = resultSet.getLong("muteTime");
+        this.muteReason = resultSet.getString("muteReason");
+        this.muteAdmin = resultSet.getString("muteAdmin");
+        this.muteNumber = resultSet.getInt("muteNumber");
         UserManager.getUsers().add(this);
     }
 
@@ -60,24 +75,44 @@ public class User {
         return ip;
     }
 
-    public int getStatus() {
-        return status;
+    public int getBanStatus() {
+        return banStatus;
     }
 
-    public long getTime() {
-        return time;
+    public long getBanTime() {
+        return banTime;
     }
 
-    public String getReason() {
-        return reason;
+    public String getBanReason() {
+        return banReason;
     }
 
-    public String getAdmin() {
-        return admin;
+    public String getBanAdmin() {
+        return banAdmin;
     }
 
-    public long getNumber() {
-        return number;
+    public long getBanNumber() {
+        return banNumber;
+    }
+
+    public int getMuteStatus() {
+        return muteStatus;
+    }
+
+    public long getMuteTime() {
+        return muteTime;
+    }
+
+    public String getMuteReason() {
+        return muteReason;
+    }
+
+    public String getMuteAdmin() {
+        return muteAdmin;
+    }
+
+    public long getMuteNumber() {
+        return muteNumber;
     }
 
     //Settery
@@ -93,23 +128,43 @@ public class User {
         this.ip = ip;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setBanStatus(int banStatus) {
+        this.banStatus = banStatus;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setBanTime(long banTime) {
+        this.banTime = banTime;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setBanReason(String banReason) {
+        this.banReason = banReason;
     }
 
-    public void setAdmin(String admin) {
-        this.admin = admin;
+    public void setBanAdmin(String banAdmin) {
+        this.banAdmin = banAdmin;
     }
 
-    public void setNumber(long number) {
-        this.number = number;
+    public void setBanNumber(long banNumber) {
+        this.banNumber = banNumber;
+    }
+
+    public void setMuteStatus(int muteStatus) {
+        this.muteStatus = muteStatus;
+    }
+
+    public void setMuteTime(long muteTime) {
+        this.muteTime = muteTime;
+    }
+
+    public void setMuteReason(String muteReason) {
+        this.muteReason = muteReason;
+    }
+
+    public void setMuteAdmin(String muteAdmin) {
+        this.muteAdmin = muteAdmin;
+    }
+
+    public void setMuteNumber(long muteNumber) {
+        this.muteNumber = muteNumber;
     }
 }

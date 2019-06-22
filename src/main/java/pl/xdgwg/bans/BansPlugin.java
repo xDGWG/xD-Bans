@@ -1,6 +1,7 @@
 package pl.xdgwg.bans;
 
 import pl.xdgwg.bans.commands.*;
+import pl.xdgwg.bans.listeners.AsyncPlayerChatListener;
 import pl.xdgwg.bans.managers.MySQLManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.utils.Util;
@@ -20,6 +21,7 @@ public class BansPlugin extends JavaPlugin {
         ConfigManager.loads();
         MySQLManager.connect();
         getServer().getPluginManager().registerEvents(new AsyncPlayerPreLoginListener(), this);
+        getServer().getPluginManager().registerEvents(new AsyncPlayerChatListener(), this);
         DataManager.load();
         UserManager.exist();
         getCommand("ban").setExecutor(new BanCommand());
@@ -28,6 +30,9 @@ public class BansPlugin extends JavaPlugin {
         getCommand("check").setExecutor(new CheckCommand());
         getCommand("tempban").setExecutor(new TempbanCommand());
         getCommand("kick").setExecutor(new KickCommand());
+        getCommand("mute").setExecutor(new MuteCommand());
+        getCommand("unmute").setExecutor(new UnmuteCommand());
+        getCommand("tempmute").setExecutor(new TempmuteCommand());
     }
 
     @Override

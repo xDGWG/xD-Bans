@@ -1,6 +1,5 @@
 package pl.xdgwg.bans.commands;
 
-
 import org.apache.commons.lang.StringUtils;
 import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
@@ -43,13 +42,13 @@ public class BanCommand implements CommandExecutor {
             Util.sendMessage(commandSender, ConfigManager.getBanYourself());
             return false;
         }
-        if (u.getStatus() == 1 || u.getStatus() == 2){
+        if (u.getBanStatus() == 1 || u.getBanStatus() == 2){
             Util.sendMessage(commandSender, ConfigManager.getBanned());
             return false;
         }
-        u.setStatus(1);
-        u.setReason(reason);
-        u.setAdmin(adminName);
+        u.setBanStatus(1);
+        u.setBanReason(reason);
+        u.setBanAdmin(adminName);
         DataManager.saveUser(u);
         if (offlinePlayer.isOnline()) offlinePlayer.getPlayer().kickPlayer(Util.fixColor(kickMessage));
         Util.sendBroadcast(ConfigManager.getBanBroadcast().replace("{PLAYER}", playerName).replace("{ADMIN}", adminName).replace("{REASON}", reason));

@@ -48,6 +48,22 @@ messages:
 
   kickAllBroadcast: "&8>> &cWszyscy gracze zostali wyrzuceni z serwera przez &4{ADMIN} &cza &4{REASON}&c!"
 
+  muteBroadcast: "&8>> &cGracz &4{PLAYER} &czostal wyciszony przez &4{ADMIN} &cza &4{REASON}&c!"
+
+  muted: "&4Blad: &cPodany gracz jest juz wyciszony!"
+
+  muteMessage: "&4Blad: &cJestes wycisozny przez &4{ADMIN} &cza &4{REASON}&c!"
+
+  muteYourself: "&4Blad: &cNie mozesz siebie wyciszyc!"
+
+  notMuted: "&4Blad: &cPodany gracz nie jest wyciszony!"
+
+  unmuteBroadcast: "&8>> &aGracz &2{PLAYER} &amoze znowu pisac na chacie!"
+
+  tempMuteBroadcast: "&8>> &cGracz &4{PLAYER} &czostal wyciszony przez &4{ADMIN} &cza &4{REASON} &cna &4{TIME}&c!"
+
+  tempMuteMessage: "&4Blad: &cJestes wyciszony przez &4{ADMIN} &cna &4{TIME} &cza &4{REASON}"
+
   timeFormat:
     seconds: "sek."
     minutes: "min."
@@ -103,15 +119,23 @@ messages:
       - "&8>> &7Uuid: &c{UUID}"
       - "&8>> &7Ip: &c{IP}"
       - "&8>> &7Mozna zbanowac: &c{BYPASS}"
-      - "&8>> &7Rodzaj bana: &c{STATUS}"
-      - "&8>> &7Czas bana: &c{TIME}"
-      - "&8>> &7Powod bana: &c{REASON}"
-      - "&8>> &7Zbanowal: &c{ADMIN}"
+      - "&8>> &7Rodzaj bana: &c{BAN-STATUS}"
+      - "&8>> &7Czas bana: &c{BAN-TIME}"
+      - "&8>> &7Powod bana: &c{BAN-REASON}"
+      - "&8>> &7Zbanowal: &c{BAN-ADMIN}"
+      - "&8>> &7Wyciszony: &c{MUTE-STATUS}"
+      - "&8>> &7Czas wyciszenia: &c{MUTE-TIME}"
+      - "&8>> &7Powod wyciszenia: &c{MUTE-REASON}"
+      - "&8>> &7Wyciszyl: &c{MUTE-ADMIN}"
       - "&8-------------------------------------"
-    status:
+    banStatus:
       noBan: "-"
       permBan: "Permanentny"
       tempBan: "Tymczasowy"
+    muteStatus:
+      noMute: "Nie"
+      permMute: "Permanentnie"
+      tempMute: "Tymczasowo"
     bypass:
       enable: "Tak"
       disable: "Nie"

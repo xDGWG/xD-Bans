@@ -43,6 +43,17 @@ public class ConfigManager {
     private static Boolean playerNameFilter;
     private static String kickPlayerBroadcast;
     private static String kickAllBroadcast;
+    private static String muteBroadcast;
+    private static String muted;
+    private static String muteMessage;
+    private static String muteYourself;
+    private static String notMuted;
+    private static String unmuteBroadcast;
+    private static String tempMuteBroadcast;
+    private static String tempMuteMessage;
+    private static String checkStatusNoMute;
+    private static String checkStatusPermMute;
+    private static String checkStatusTempMute;
 
     public static void loads(){
         BansPlugin.getInstance().saveDefaultConfig();
@@ -62,9 +73,9 @@ public class ConfigManager {
         bypassOn = fileConfiguration.getString("messages.bypassOn");
         bypassOff = fileConfiguration.getString("messages.bypassOff");
         check = fileConfiguration.getStringList("messages.check.lines");
-        checkStatusNoBan = fileConfiguration.getString("messages.check.status.noBan");
-        checkStatusPermBan = fileConfiguration.getString("messages.check.status.permBan");
-        checkStatusTempBan = fileConfiguration.getString("messages.check.status.tempBan");
+        checkStatusNoBan = fileConfiguration.getString("messages.check.banStatus.noBan");
+        checkStatusPermBan = fileConfiguration.getString("messages.check.banStatus.permBan");
+        checkStatusTempBan = fileConfiguration.getString("messages.check.banStatus.tempBan");
         checkBypassOn = fileConfiguration.getString("messages.check.bypass.enable");
         checkBypassOff = fileConfiguration.getString("messages.check.bypass.disable");
         tempBanKick = fileConfiguration.getStringList("messages.tempBanKick");
@@ -84,6 +95,17 @@ public class ConfigManager {
         kick = fileConfiguration.getStringList("messages.kick");
         kickPlayerBroadcast = fileConfiguration.getString("messages.kickPlayerBroadcast");
         kickAllBroadcast = fileConfiguration.getString("messages.kickAllBroadcast");
+        muteBroadcast = fileConfiguration.getString("messages.muteBroadcast");
+        muted = fileConfiguration.getString("messages.muted");
+        muteMessage = fileConfiguration.getString("messages.muteMessage");
+        muteYourself = fileConfiguration.getString("messages.muteYourself");
+        notMuted = fileConfiguration.getString("messages.notMuted");
+        unmuteBroadcast = fileConfiguration.getString("messages.unmuteBroadcast");
+        tempMuteBroadcast = fileConfiguration.getString("messages.tempMuteBroadcast");
+        tempMuteMessage = fileConfiguration.getString("messages.tempMuteMessage");
+        checkStatusNoMute = fileConfiguration.getString("messages.check.muteStatus.noMute");
+        checkStatusPermMute = fileConfiguration.getString("messages.check.muteStatus.permMute");
+        checkStatusTempMute = fileConfiguration.getString("messages.check.muteStatus.tempMute");
     }
 
     public static String getNoPermission() {
@@ -232,5 +254,49 @@ public class ConfigManager {
 
     public static String getKickAllBroadcast() {
         return kickAllBroadcast;
+    }
+
+    public static String getMuteBroadcast() {
+        return muteBroadcast;
+    }
+
+    public static String getMuted() {
+        return muted;
+    }
+
+    public static String getMuteMessage() {
+        return muteMessage;
+    }
+
+    public static String getMuteYourself() {
+        return muteYourself;
+    }
+
+    public static String getNotMuted() {
+        return notMuted;
+    }
+
+    public static String getUnmuteBroadcast() {
+        return unmuteBroadcast;
+    }
+
+    public static String getTempMuteBroadcast() {
+        return tempMuteBroadcast;
+    }
+
+    public static String getTempMuteMessage() {
+        return tempMuteMessage;
+    }
+
+    public static String getCheckStatusNoMute() {
+        return checkStatusNoMute;
+    }
+
+    public static String getCheckStatusPermMute() {
+        return checkStatusPermMute;
+    }
+
+    public static String getCheckStatusTempMute() {
+        return checkStatusTempMute;
     }
 }

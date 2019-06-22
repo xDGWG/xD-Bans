@@ -52,7 +52,7 @@ public class Util {
         return string;
     }
 
-    public static String checkStatus(int i){
+    public static String checkBanStatus(int i){
         String string = "";
         if (i == 0){
             string = ConfigManager.getCheckStatusNoBan();
@@ -64,8 +64,20 @@ public class Util {
         return string;
     }
 
-    public static String getBanTime(User u, long now, long ban, long number){
-        if (u.getStatus() != 2){
+    public static String checkMuteStatus(int i){
+        String string = "";
+        if (i == 0){
+            string = ConfigManager.getCheckStatusNoMute();
+        } else if (i == 1){
+            string = ConfigManager.getCheckStatusPermMute();
+        } else if (i == 2){
+            string = ConfigManager.getCheckStatusTempMute();
+        }
+        return string;
+    }
+
+    public static String getTime(User u, int status, long now, long ban, long number){
+        if (status != 2){
             return "-";
         }
         if ((now - ban) - number > 0){

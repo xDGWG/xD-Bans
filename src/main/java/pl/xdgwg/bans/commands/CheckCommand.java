@@ -30,17 +30,28 @@ public class CheckCommand implements CommandExecutor {
             return false;
         }
         long now = Util.getSystemTime();
-        long ban = u.getTime();
-        long number = u.getNumber();
-        if ((u.getStatus() == 2) && (now - ban) > number) {
-            u.setStatus(0);
-            u.setAdmin("-");
-            u.setReason("-");
-            u.setTime(0);
-            u.setNumber(0);
+        long banTime = u.getBanTime();
+        long banNumber = u.getBanNumber();
+        long muteTime = u.getMuteTime();
+        long muteNumber = u.getMuteNumber();
+        if ((u.getBanStatus() == 2) && (now - banTime) > banNumber) {
+            u.setBanStatus(0);
+            u.setBanAdmin("-");
+            u.setBanReason("-");
+            u.setBanTime(0);
+            u.setBanNumber(0);
             DataManager.saveUser(u);
         }
-        String string = Util.stringList(ConfigManager.getCheck()).replace("{PLAYER}", u.getName()).replace("{UUID}", u.getUuid().toString()).replace("{IP}", u.getIp()).replace("{BYPASS}", u.getBypass() ? ConfigManager.getCheckBypassOff() : ConfigManager.getCheckBypassOn()).replace("{STATUS}", Util.checkStatus(u.getStatus())).replace("{TIME}", Util.getBanTime(u, Util.getSystemTime(), u.getTime(), u.getNumber())).replace("{REASON}", u.getReason()).replace("{ADMIN}", u.getAdmin());
+
+        if ((u.getMuteStatus() == 2) && (now - muteTime) > muteNumber) {
+            u.setMuteStatus(0);
+            u.setMuteAdmin("-");
+            u.setMuteReason("-");
+            u.setMuteTime(0);
+            u.setMuteNumber(0);
+            DataManager.saveUser(u);
+        }
+        String string = Util.stringList(ConfigManager.getCheck()).replace("{PLAYER}", u.getName()).replace("{UUID}", u.getUuid().toString()).replace("{IP}", u.getIp()).replace("{BYPASS}", u.getBypass() ? ConfigManager.getCheckBypassOff() : ConfigManager.getCheckBypassOn()).replace("{BAN-STATUS}", Util.checkBanStatus(u.getBanStatus())).replace("{BAN-TIME}", Util.getTime(u, u.getBanStatus(), Util.getSystemTime(), u.getBanTime(), u.getBanNumber())).replace("{BAN-REASON}", u.getBanReason()).replace("{BAN-ADMIN}", u.getBanAdmin()).replace("{MUTE-STATUS}", Util.checkMuteStatus(u.getMuteStatus())).replace("{MUTE-ADMIN}", u.getMuteAdmin()).replace("{MUTE-REASON}", u.getMuteReason()).replace("{MUTE-TIME}", Util.getTime(u, u.getMuteStatus(), Util.getSystemTime(), u.getMuteTime(), u.getMuteNumber()));
         Util.sendMessage(commandSender, string);
         return true;
     }

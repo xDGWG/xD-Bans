@@ -29,15 +29,15 @@ public class UnbanCommand implements CommandExecutor {
             Util.sendMessage(commandSender, ConfigManager.getNotExist());
             return false;
         }
-        if (u.getStatus() == 0){
+        if (u.getBanStatus() == 0){
             Util.sendMessage(commandSender, ConfigManager.getNotBanned());
             return false;
         }
-        u.setStatus(0);
-        u.setAdmin("-");
-        u.setReason("-");
-        u.setTime(0);
-        u.setNumber(0);
+        u.setBanStatus(0);
+        u.setBanAdmin("-");
+        u.setBanReason("-");
+        u.setBanTime(0);
+        u.setBanNumber(0);
         DataManager.saveUser(u);
         Util.sendBroadcast(ConfigManager.getUnbanBroadcast().replace("{PLAYER}", u.getName()).replace("{ADMIN}", commandSender.getName()));
         return true;
