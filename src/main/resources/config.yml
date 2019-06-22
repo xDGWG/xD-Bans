@@ -1,15 +1,24 @@
 #################################
 #            xD-Bans            #
 #          Autor xDGWG          #
+#        https://xdgwg.pl       #
 #################################
 
 
 configs:
-  #flat or mysql
+  #flat albo mysql
   dataType: flat
 
+#Sprawdzanie poprawności wielkich liter w nazwie gracza
   playerNameFilter: true
 
+#Liczba ostrzeżeń po której wykonywana jest komenda
+  warningsCount: 3
+
+#Komenda, która jest wykonywana po osiągnięciu przez gracza maksymalnej liczby ostrzeżeń
+  warningsCommand: "/tempban {PLAYER} 7 d Zebranie trzech ostrzezen!"
+
+#Jeżeli "dataType: mysql" wypełnij to
   mysql:
     host: "localhost"
     port: "3306"
@@ -63,6 +72,12 @@ messages:
   tempMuteBroadcast: "&8>> &cGracz &4{PLAYER} &czostal wyciszony przez &4{ADMIN} &cza &4{REASON} &cna &4{TIME}&c!"
 
   tempMuteMessage: "&4Blad: &cJestes wyciszony przez &4{ADMIN} &cna &4{TIME} &cza &4{REASON}"
+
+  warnBroadcast: "&8>> &cGracz &4{PLAYER} &cotrzymał &4ostrzezenie &cod &4{ADMIN} &cza &4{REASON}&c! &8(&c{WARNINGS}&7/&4{MAX}&8)"
+
+  warnYourself: "&4Blad: &cNie mozesz dac sobie ostrzezenia!"
+
+  warnBannedPlayer: "&4Blad: &cNie mozesz dac ostrzezenia zbanowanemu graczowi!"
 
   timeFormat:
     seconds: "sek."
@@ -119,6 +134,7 @@ messages:
       - "&8>> &7Uuid: &c{UUID}"
       - "&8>> &7Ip: &c{IP}"
       - "&8>> &7Mozna zbanowac: &c{BYPASS}"
+      - "&8>> &7Liczba ostrzezen: &c{WARNINGS}"
       - "&8>> &7Rodzaj bana: &c{BAN-STATUS}"
       - "&8>> &7Czas bana: &c{BAN-TIME}"
       - "&8>> &7Powod bana: &c{BAN-REASON}"

@@ -33,6 +33,7 @@ public class BansPlugin extends JavaPlugin {
         getCommand("mute").setExecutor(new MuteCommand());
         getCommand("unmute").setExecutor(new UnmuteCommand());
         getCommand("tempmute").setExecutor(new TempmuteCommand());
+        getCommand("warn").setExecutor(new WarnCommand());
     }
 
     @Override

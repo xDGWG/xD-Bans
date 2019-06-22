@@ -49,6 +49,7 @@ public class MySQLManager {
                 "uuid VARCHAR(36) not null, " +
                 "ip VARCHAR(100) not null, " +
                 "bypass VARCHAR(100) not null, " +
+                "warnings int(16) not null, " +
                 "banStatus int(16) not null, " +
                 "banTime long not null, " +
                 "banReason varchar(200) not null, " +
@@ -67,21 +68,22 @@ public class MySQLManager {
     public static void saveUser(User u) throws SQLException{
         createTable();
         connection = hikari.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("REPLACE INTO users (name, uuid, ip, bypass, banStatus, banTime, banReason, banAdmin, banNumber, muteStatus, muteTime, muteReason, muteAdmin, muteNumber) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        PreparedStatement preparedStatement = connection.prepareStatement("REPLACE INTO users (name, uuid, ip, bypass, warnings, banStatus, banTime, banReason, banAdmin, banNumber, muteStatus, muteTime, muteReason, muteAdmin, muteNumber) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         preparedStatement.setString(1, u.getName());
         preparedStatement.setString(2, u.getUuid().toString());
         preparedStatement.setString(3, u.getIp());
         preparedStatement.setBoolean(4, u.getBypass());
-        preparedStatement.setInt(5, u.getBanStatus());
-        preparedStatement.setLong(6, u.getBanTime());
-        preparedStatement.setString(7, u.getBanReason());
-        preparedStatement.setString(8, u.getBanAdmin());
-        preparedStatement.setLong(9, u.getBanNumber());
-        preparedStatement.setInt(10, u.getMuteStatus());
-        preparedStatement.setLong(11, u.getMuteTime());
-        preparedStatement.setString(12, u.getMuteReason());
-        preparedStatement.setString(13, u.getMuteAdmin());
-        preparedStatement.setLong(14, u.getMuteNumber());
+        preparedStatement.setInt(5, u.getWarnings());
+        preparedStatement.setInt(6, u.getBanStatus());
+        preparedStatement.setLong(7, u.getBanTime());
+        preparedStatement.setString(8, u.getBanReason());
+        preparedStatement.setString(9, u.getBanAdmin());
+        preparedStatement.setLong(10, u.getBanNumber());
+        preparedStatement.setInt(11, u.getMuteStatus());
+        preparedStatement.setLong(12, u.getMuteTime());
+        preparedStatement.setString(13, u.getMuteReason());
+        preparedStatement.setString(14, u.getMuteAdmin());
+        preparedStatement.setLong(15, u.getMuteNumber());
         preparedStatement.executeUpdate();
         preparedStatement.close();
         connection.close();

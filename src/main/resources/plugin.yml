@@ -1,6 +1,6 @@
 name: xD-Bans
 author: xDGWG
-version: 1.2
+version: 1.3
 main: pl.xdgwg.bans.BansPlugin
 website: https://xdgwg.pl
 
@@ -14,3 +14,4 @@ commands:
   mute:
   unmute:
   tempmute:
+  warn:

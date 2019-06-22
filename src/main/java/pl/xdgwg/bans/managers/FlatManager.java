@@ -24,6 +24,7 @@ public class FlatManager {
         yamlConfiguration.set("uuid", u.getUuid().toString());
         yamlConfiguration.set("ip", u.getIp());
         yamlConfiguration.set("bypass", u.getBypass());
+        yamlConfiguration.set("warnings", u.getWarnings());
         yamlConfiguration.set("banStatus", u.getBanStatus());
         yamlConfiguration.set("banTime", u.getBanTime());
         yamlConfiguration.set("banReason", u.getBanReason());
@@ -49,6 +50,7 @@ public class FlatManager {
             String uuid = yamlConfiguration.getString("uuid");
             String ip = yamlConfiguration.getString("ip");
             boolean bypass = yamlConfiguration.getBoolean("bypass");
+            int warnings = yamlConfiguration.getInt("warnings");
             int banStatus = yamlConfiguration.getInt("banStatus");
             long banTime = yamlConfiguration.getLong("banTime");
             String banReason = yamlConfiguration.getString("banReason");
@@ -59,7 +61,7 @@ public class FlatManager {
             String muteReason = yamlConfiguration.getString("muteReason");
             String muteAdmin = yamlConfiguration.getString("muteAdmin");
             long muteNumber = yamlConfiguration.getLong("muteNumber");
-            new User(name, uuid, ip, bypass, banStatus, banTime, banReason, banAdmin, banNumber, muteStatus, muteTime, muteReason, muteAdmin, muteNumber);
+            new User(name, uuid, ip, bypass, warnings, banStatus, banTime, banReason, banAdmin, banNumber, muteStatus, muteTime, muteReason, muteAdmin, muteNumber);
         }
     }
 }

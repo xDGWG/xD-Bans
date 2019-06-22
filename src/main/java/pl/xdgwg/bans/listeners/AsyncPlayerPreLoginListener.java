@@ -25,7 +25,7 @@ public class AsyncPlayerPreLoginListener implements Listener {
 
         //Tworzenie nowego usera jak trzeba
         if (UserManager.get(e.getUniqueId()) == null) {
-            new User(e.getName(), e.getUniqueId().toString(), e.getAddress().toString(), false, 0, 0, "-", "-", 0, 0, 0, "-", "-", 0);
+            new User(e.getName(), e.getUniqueId().toString(), e.getAddress().toString(), false, 0, 0, 0, "-", "-", 0, 0, 0, "-", "-", 0);
         }
         User u = UserManager.get(e.getUniqueId());
         String messageBan = Util.stringList(ConfigManager.getBanJoin()).replace("{ADMIN}", u.getBanAdmin()).replace("{REASON}", u.getBanReason());

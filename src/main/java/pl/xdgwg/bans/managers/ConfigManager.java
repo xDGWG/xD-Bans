@@ -54,6 +54,11 @@ public class ConfigManager {
     private static String checkStatusNoMute;
     private static String checkStatusPermMute;
     private static String checkStatusTempMute;
+    private static int warningsCount;
+    private static String warningsCommand;
+    private static String warnBroadcast;
+    private static String warnYourself;
+    private static String warnBannedPlayer;
 
     public static void loads(){
         BansPlugin.getInstance().saveDefaultConfig();
@@ -106,6 +111,11 @@ public class ConfigManager {
         checkStatusNoMute = fileConfiguration.getString("messages.check.muteStatus.noMute");
         checkStatusPermMute = fileConfiguration.getString("messages.check.muteStatus.permMute");
         checkStatusTempMute = fileConfiguration.getString("messages.check.muteStatus.tempMute");
+        warningsCount = fileConfiguration.getInt("configs.warningsCount");
+        warningsCommand = fileConfiguration.getString("configs.warningsCommand");
+        warnBroadcast = fileConfiguration.getString("messages.warnBroadcast");
+        warnYourself = fileConfiguration.getString("messages.warnYourself");
+        warnBannedPlayer = fileConfiguration.getString("messages.warnBannedPlayer");
     }
 
     public static String getNoPermission() {
@@ -298,5 +308,25 @@ public class ConfigManager {
 
     public static String getCheckStatusTempMute() {
         return checkStatusTempMute;
+    }
+
+    public static int getWarningsCount() {
+        return warningsCount;
+    }
+
+    public static String getWarningsCommand() {
+        return warningsCommand;
+    }
+
+    public static String getWarnBroadcast() {
+        return warnBroadcast;
+    }
+
+    public static String getWarnYourself() {
+        return warnYourself;
+    }
+
+    public static String getWarnBannedPlayer() {
+        return warnBannedPlayer;
     }
 }

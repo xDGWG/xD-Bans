@@ -11,6 +11,7 @@ public class User {
     private final UUID uniqueId;
     private String ip;
     private boolean bypass;
+    private int warnings;
     private int banStatus;
     private long banTime;
     private String banReason;
@@ -22,11 +23,12 @@ public class User {
     private String muteAdmin;
     private long muteNumber;
 
-    public User(String name, String uniqueId, String ip, boolean banBypass, int banStatus, long banTime, String banReason, String banAdmin, long banNumber, int muteStatus, long muteTime, String muteReason, String muteAdmin, long muteNumber){
+    public User(String name, String uniqueId, String ip, boolean banBypass, int warnings, int banStatus, long banTime, String banReason, String banAdmin, long banNumber, int muteStatus, long muteTime, String muteReason, String muteAdmin, long muteNumber){
         this.name = name;
         this.uniqueId = UUID.fromString(uniqueId);
         this.ip = ip.replace("/", "");
         this.bypass = banBypass;
+        this.warnings = warnings;
         this.banStatus = banStatus;
         this.banTime = banTime;
         this.banReason = banReason;
@@ -45,6 +47,7 @@ public class User {
         this.uniqueId = UUID.fromString(resultSet.getString("uuid"));
         this.ip = resultSet.getString("ip").replace("/", "");
         this.bypass = resultSet.getBoolean("bypass");
+        this.warnings = resultSet.getInt("warnings");
         this.banStatus = resultSet.getInt("banStatus");
         this.banTime = resultSet.getLong("banTime");
         this.banReason = resultSet.getString("banReason");
@@ -115,6 +118,10 @@ public class User {
         return muteNumber;
     }
 
+    public int getWarnings() {
+        return warnings;
+    }
+
     //Settery
     public void setName(String name) {
         this.name = name;
@@ -166,5 +173,9 @@ public class User {
 
     public void setMuteNumber(long muteNumber) {
         this.muteNumber = muteNumber;
+    }
+
+    public void setWarnings(int warnings) {
+        this.warnings = warnings;
     }
 }
