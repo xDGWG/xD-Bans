@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import pl.xdgwg.bans.managers.ConfigManager;
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -48,7 +47,7 @@ public class MuteCommand implements CommandExecutor {
         u.setMuteStatus(1);
         u.setMuteReason(reason);
         u.setMuteAdmin(adminName);
-        DataManager.saveUser(u);
+        u.save();
         Util.sendBroadcast(ConfigManager.getMuteBroadcast().replace("{PLAYER}", playerName).replace("{ADMIN}", adminName).replace("{REASON}", reason));
         return true;
     }

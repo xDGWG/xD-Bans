@@ -7,7 +7,6 @@ import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.utils.Util;
 import pl.xdgwg.bans.listeners.AsyncPlayerPreLoginListener;
 import pl.xdgwg.bans.managers.ConfigManager;
-import pl.xdgwg.bans.managers.DataManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BansPlugin extends JavaPlugin {
@@ -22,7 +21,7 @@ public class BansPlugin extends JavaPlugin {
         MySQLManager.connect();
         getServer().getPluginManager().registerEvents(new AsyncPlayerPreLoginListener(), this);
         getServer().getPluginManager().registerEvents(new AsyncPlayerChatListener(), this);
-        DataManager.load();
+        UserManager.load();
         UserManager.exist();
         getCommand("ban").setExecutor(new BanCommand());
         getCommand("unban").setExecutor(new UnbanCommand());
@@ -34,6 +33,9 @@ public class BansPlugin extends JavaPlugin {
         getCommand("unmute").setExecutor(new UnmuteCommand());
         getCommand("tempmute").setExecutor(new TempmuteCommand());
         getCommand("warn").setExecutor(new WarnCommand());
+        getCommand("banlist").setExecutor(new BanListCommand());
+        getCommand("mutelist").setExecutor(new MuteListCommand());
+        getCommand("bypasslist").setExecutor(new BypassListCommand());
     }
 
     @Override

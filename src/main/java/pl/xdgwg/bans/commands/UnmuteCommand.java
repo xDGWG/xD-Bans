@@ -6,7 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import pl.xdgwg.bans.managers.ConfigManager;
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -38,7 +37,7 @@ public class UnmuteCommand implements CommandExecutor {
         u.setMuteReason("-");
         u.setMuteAdmin("-");
         u.setMuteNumber(0);
-        DataManager.saveUser(u);
+        u.save();
         Util.sendBroadcast(ConfigManager.getUnmuteBroadcast().replace("{PLAYER}", u.getName()).replace("{ADMIN}", commandSender.getName()));
         return true;
     }

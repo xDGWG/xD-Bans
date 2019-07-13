@@ -1,6 +1,5 @@
 package pl.xdgwg.bans.commands;
 
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -32,13 +31,13 @@ public class BypassCommand implements CommandExecutor {
         }
         if (u.getBypass()){
             u.setBypass(false);
-            DataManager.saveUser(u);
+            u.save();
             Util.sendMessage(commandSender, ConfigManager.getBypassOff().replace("{PLAYER}", playerName));
             return true;
         }
         if (!u.getBypass()){
             u.setBypass(true);
-            DataManager.saveUser(u);
+            u.save();
             Util.sendMessage(commandSender, ConfigManager.getBypassOn().replace("{PLAYER}", playerName));
             return true;
         }

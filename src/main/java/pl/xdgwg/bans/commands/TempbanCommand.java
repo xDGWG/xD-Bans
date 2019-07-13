@@ -1,7 +1,6 @@
 package pl.xdgwg.bans.commands;
 
 import org.apache.commons.lang.StringUtils;
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -77,7 +76,7 @@ public class TempbanCommand implements CommandExecutor {
             bcTime = "" + time + " " + ConfigManager.getTimeFormatDays();
         }
         u.setBanNumber(number);
-        DataManager.saveUser(u);
+        u.save();
         String kickMessage = Util.stringList(ConfigManager.getTempBanKick()).replace("{ADMIN}", adminName).replace("{REASON}", reason).replace("{TIME}", bcTime);
         if (offlinePlayer.isOnline()) offlinePlayer.getPlayer().kickPlayer(Util.fixColor(kickMessage));
         Util.sendBroadcast(ConfigManager.getTempBanBroadcast().replace("{PLAYER}", playerName).replace("{ADMIN}", adminName).replace("{REASON}", reason).replace("{TIME}", bcTime));

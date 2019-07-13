@@ -1,6 +1,5 @@
 package pl.xdgwg.bans.commands;
 
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -40,7 +39,7 @@ public class CheckCommand implements CommandExecutor {
             u.setBanReason("-");
             u.setBanTime(0);
             u.setBanNumber(0);
-            DataManager.saveUser(u);
+            u.save();
         }
 
         if ((u.getMuteStatus() == 2) && (now - muteTime) > muteNumber) {
@@ -49,7 +48,7 @@ public class CheckCommand implements CommandExecutor {
             u.setMuteReason("-");
             u.setMuteTime(0);
             u.setMuteNumber(0);
-            DataManager.saveUser(u);
+            u.save();
         }
         String string = Util.stringList(ConfigManager.getCheck()).replace("{PLAYER}", u.getName()).replace("{UUID}", u.getUuid().toString()).replace("{WARNINGS}", String.valueOf(u.getWarnings())).replace("{IP}", u.getIp()).replace("{BYPASS}", u.getBypass() ? ConfigManager.getCheckBypassOff() : ConfigManager.getCheckBypassOn()).replace("{BAN-STATUS}", Util.checkBanStatus(u.getBanStatus())).replace("{BAN-TIME}", Util.getTime(u, u.getBanStatus(), Util.getSystemTime(), u.getBanTime(), u.getBanNumber())).replace("{BAN-REASON}", u.getBanReason()).replace("{BAN-ADMIN}", u.getBanAdmin()).replace("{MUTE-STATUS}", Util.checkMuteStatus(u.getMuteStatus())).replace("{MUTE-ADMIN}", u.getMuteAdmin()).replace("{MUTE-REASON}", u.getMuteReason()).replace("{MUTE-TIME}", Util.getTime(u, u.getMuteStatus(), Util.getSystemTime(), u.getMuteTime(), u.getMuteNumber()));
         Util.sendMessage(commandSender, string);

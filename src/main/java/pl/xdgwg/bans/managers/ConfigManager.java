@@ -59,6 +59,9 @@ public class ConfigManager {
     private static String warnBroadcast;
     private static String warnYourself;
     private static String warnBannedPlayer;
+    private static String banList;
+    private static String muteList;
+    private static String bypassList;
 
     public static void loads(){
         BansPlugin.getInstance().saveDefaultConfig();
@@ -116,6 +119,9 @@ public class ConfigManager {
         warnBroadcast = fileConfiguration.getString("messages.warnBroadcast");
         warnYourself = fileConfiguration.getString("messages.warnYourself");
         warnBannedPlayer = fileConfiguration.getString("messages.warnBannedPlayer");
+        banList = fileConfiguration.getString("messages.banList");
+        muteList = fileConfiguration.getString("messages.muteList");
+        bypassList = fileConfiguration.getString("messages.bypassList");
     }
 
     public static String getNoPermission() {
@@ -328,5 +334,17 @@ public class ConfigManager {
 
     public static String getWarnBannedPlayer() {
         return warnBannedPlayer;
+    }
+
+    public static String getBanList() {
+        return banList;
+    }
+
+    public static String getMuteList() {
+        return muteList;
+    }
+
+    public static String getBypassList() {
+        return bypassList;
     }
 }

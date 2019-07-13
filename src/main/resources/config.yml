@@ -79,6 +79,12 @@ messages:
 
   warnBannedPlayer: "&4Blad: &cNie mozesz dac ostrzezenia zbanowanemu graczowi!"
 
+  banList: "&8>> &cLista zbanowanych graczy: &7{LIST}"
+
+  muteList: "&8>> &cLista wyciszonych graczy: &7{LIST}"
+
+  bypassList: "&8>> &cLista nietykalnych graczy: &7{LIST}"
+
   timeFormat:
     seconds: "sek."
     minutes: "min."

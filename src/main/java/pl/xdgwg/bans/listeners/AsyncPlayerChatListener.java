@@ -4,9 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import pl.xdgwg.bans.managers.ConfigManager;
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -29,7 +27,7 @@ public class AsyncPlayerChatListener implements Listener {
                 u.setMuteReason("-");
                 u.setMuteTime(0);
                 u.setMuteNumber(0);
-                DataManager.saveUser(u);
+                u.save();
             } else {
                 e.setCancelled(true);
                 Util.sendMessage(p, ConfigManager.getTempMuteMessage().replace("{ADMIN}", u.getMuteAdmin()).replace("{REASON}", u.getMuteReason()).replace("{TIME}", Util.getTime(u, u.getMuteStatus(), Util.getSystemTime(), u.getMuteTime(), u.getMuteNumber())));

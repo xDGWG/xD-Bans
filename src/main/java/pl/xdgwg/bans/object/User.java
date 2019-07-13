@@ -1,6 +1,13 @@
 package pl.xdgwg.bans.object;
 
+import org.bukkit.Bukkit;
+import pl.xdgwg.bans.BansPlugin;
+import pl.xdgwg.bans.managers.ConfigManager;
+import pl.xdgwg.bans.managers.FlatManager;
+import pl.xdgwg.bans.managers.MySQLManager;
 import pl.xdgwg.bans.managers.UserManager;
+import pl.xdgwg.bans.utils.Util;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
@@ -59,6 +66,19 @@ public class User {
         this.muteAdmin = resultSet.getString("muteAdmin");
         this.muteNumber = resultSet.getInt("muteNumber");
         UserManager.getUsers().add(this);
+    }
+
+    public void save(){
+        if (ConfigManager.getDataType().equalsIgnoreCase("mysql")){
+            try{
+                MySQLManager.saveUser(this);
+            } catch (Exception e){
+                Util.sendConsole(Util.getTag() + " &8&l>> &4Mysql error! &cCheck config.yml!");
+                Bukkit.getPluginManager().disablePlugin(BansPlugin.getInstance());
+            }
+        } else {
+            FlatManager.saveUser(this);
+        }
     }
 
     //Gettery

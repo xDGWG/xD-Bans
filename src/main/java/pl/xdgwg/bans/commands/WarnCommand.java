@@ -7,7 +7,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import pl.xdgwg.bans.managers.ConfigManager;
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -49,10 +48,10 @@ public class WarnCommand implements CommandExecutor {
         if (u.getWarnings() >= ConfigManager.getWarningsCount()){
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), ConfigManager.getWarningsCommand().replace("/", "").replace("{PLAYER}", playerName));
             u.setWarnings(0);
-            DataManager.saveUser(u);
+            u.save();
             return false;
         }
-        DataManager.saveUser(u);
+        u.save();
         Util.sendBroadcast(ConfigManager.getWarnBroadcast().replace("{MAX}", String.valueOf(ConfigManager.getWarningsCount())).replace("{WARNINGS}", String.valueOf(u.getWarnings())).replace("{PLAYER}", playerName).replace("{ADMIN}", adminName).replace("{REASON}", reason));
         return true;
     }

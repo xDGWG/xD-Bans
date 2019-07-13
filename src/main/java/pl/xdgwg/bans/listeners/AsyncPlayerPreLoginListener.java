@@ -1,6 +1,5 @@
 package pl.xdgwg.bans.listeners;
 
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -42,7 +41,7 @@ public class AsyncPlayerPreLoginListener implements Listener {
                 u.setBanReason("-");
                 u.setBanTime(0);
                 u.setBanNumber(0);
-                DataManager.saveUser(u);
+                u.save();
             } else {
                 e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_BANNED, Util.fixColor(messageTempBan));
             }

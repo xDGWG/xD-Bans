@@ -1,6 +1,5 @@
 package pl.xdgwg.bans.commands;
 
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -38,7 +37,7 @@ public class UnbanCommand implements CommandExecutor {
         u.setBanReason("-");
         u.setBanTime(0);
         u.setBanNumber(0);
-        DataManager.saveUser(u);
+        u.save();
         Util.sendBroadcast(ConfigManager.getUnbanBroadcast().replace("{PLAYER}", u.getName()).replace("{ADMIN}", commandSender.getName()));
         return true;
     }

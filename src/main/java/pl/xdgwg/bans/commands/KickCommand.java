@@ -20,11 +20,11 @@ public class KickCommand implements CommandExecutor {
             return false;
         }
         if (strings.length < 2){
-            Util.sendMessage(commandSender, ConfigManager.getUsage().replace("{USAGE}", "/kick [player/*] [reason]"));
+            Util.sendMessage(commandSender, ConfigManager.getUsage().replace("{USAGE}", "/kick [player/@] [reason]"));
             return false;
         }
         String reason = StringUtils.join(strings, " ").replaceFirst(strings[0] + " ", "");
-        if (strings[0].equalsIgnoreCase("*")){
+        if (strings[0].equalsIgnoreCase("@")){
             for (Player players : Bukkit.getOnlinePlayers()){
                 User u = UserManager.get(players.getUniqueId());
                 if (!u.getBypass()){

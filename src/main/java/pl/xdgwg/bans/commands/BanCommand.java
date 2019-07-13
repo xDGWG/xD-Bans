@@ -1,7 +1,6 @@
 package pl.xdgwg.bans.commands;
 
 import org.apache.commons.lang.StringUtils;
-import pl.xdgwg.bans.managers.DataManager;
 import pl.xdgwg.bans.managers.UserManager;
 import pl.xdgwg.bans.object.User;
 import pl.xdgwg.bans.utils.Util;
@@ -49,7 +48,7 @@ public class BanCommand implements CommandExecutor {
         u.setBanStatus(1);
         u.setBanReason(reason);
         u.setBanAdmin(adminName);
-        DataManager.saveUser(u);
+        u.save();
         if (offlinePlayer.isOnline()) offlinePlayer.getPlayer().kickPlayer(Util.fixColor(kickMessage));
         Util.sendBroadcast(ConfigManager.getBanBroadcast().replace("{PLAYER}", playerName).replace("{ADMIN}", adminName).replace("{REASON}", reason));
         return true;

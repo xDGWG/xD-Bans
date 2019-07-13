@@ -1,8 +1,11 @@
 package pl.xdgwg.bans.managers;
 
+import pl.xdgwg.bans.BansPlugin;
 import pl.xdgwg.bans.object.User;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import pl.xdgwg.bans.utils.Util;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +33,19 @@ public class UserManager {
             if (get(p.getUniqueId()) == null){
                 new User(p.getName(), p.getUniqueId().toString(), p.getAddress().toString(), false, 0, 0, 0, "-", "-", 0, 0, 0, "-", "-", 0);
             }
+        }
+    }
+
+    public static void load() {
+        if (ConfigManager.getDataType().equalsIgnoreCase("mysql")){
+            try {
+                MySQLManager.loadUsers();
+            } catch (Exception e){
+                Util.sendConsole(Util.getTag() + " &8&l>> &4Mysql error! &cCheck config.yml!");
+                Bukkit.getPluginManager().disablePlugin(BansPlugin.getInstance());
+            }
+        } else {
+            FlatManager.loadUsers();
         }
     }
 }
