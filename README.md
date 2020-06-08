@@ -56,4 +56,4 @@ Ban plugin for minecraft server
 - xdgwg.bypasslist
 
 # Download
-- https://xdgwg.pl/pluginy.html
+- https://xdgwg.pl/downloads/xD-Bans.jar
